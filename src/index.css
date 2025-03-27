@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'VT323';
+  src: url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+}
+
+body {
+  background-color: black;
+  font-family: 'VT323', monospace;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: none;
+}
+
+/* CRT effect */
+@keyframes flicker {
+  0% {
+    opacity: 0.97;
+  }
+  5% {
+    opacity: 0.95;
+  }
+  10% {
+    opacity: 0.97;
+  }
+  15% {
+    opacity: 0.94;
+  }
+  20% {
+    opacity: 0.98;
+  }
+  50% {
+    opacity: 0.95;
+  }
+  80% {
+    opacity: 0.98;
+  }
+  100% {
+    opacity: 0.96;
+  }
+}
+
+.min-h-screen {
+  animation: flicker 0.15s infinite;
+  overflow: hidden;
+  position: relative;
+}
+
+.min-h-screen::before {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%,
+    rgba(0, 0, 0, 0.25) 50%
+  );
+  background-size: 100% 2px;
+  pointer-events: none;
+  z-index: 2;
+}
